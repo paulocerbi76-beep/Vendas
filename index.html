@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Paulo – Desenvolvedor de Sites | Seu site pronto em até 10 dias</title>
+<meta name="description" content="Sites profissionais a partir de R$ 300, feitos com carinho e entregues em até 10 dias. Fale com o Paulo no WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+html{scroll-behavior:smooth}body{margin:0}
+/* Paulo – landing page design system (palette tokens live here) */
+.pl {
+  --bg: #001259; --bg-deep: #00082a; --fg: #ffffff; --mut: #dce4ff; --acc: #81f002;
+  --acc-soft: #c8ff7a; --onacc: #001257; --card: rgba(0, 12, 61, .55); --line: rgba(80, 116, 255, .35);
+  --blue: #1f46d8;
+  position: relative; min-height: 100vh; color: var(--fg); font-family: 'DM Sans', system-ui, sans-serif;
+  line-height: 1.6; overflow-x: hidden; background: var(--bg-deep); isolation: isolate;
+}
+.pl *{box-sizing:border-box}
+.pl h1,.pl h2,.pl h3,.pl .disp{font-family:'Sora',system-ui,sans-serif;margin:0;letter-spacing:-.02em}
+.pl section,.pl header,.pl footer{max-width:1160px;margin:0 auto;padding:96px 24px;position:relative}
+
+/* ---------- animated mesh gradient background ---------- */
+.pl-bg{position:fixed;inset:0;z-index:-2;overflow:hidden;background:linear-gradient(160deg,#000a30 0%,#001259 55%,#000a30 100%)}
+.pl-blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:0;animation:blobIn 2.4s .2s ease-out forwards, drift 22s ease-in-out infinite alternate}
+.pl-blob.a{width:60vmax;height:60vmax;top:-20vmax;right:-15vmax;background:radial-gradient(circle,rgba(129,240,2,.42),transparent 65%)}
+.pl-blob.b{width:55vmax;height:55vmax;bottom:-25vmax;left:-20vmax;background:radial-gradient(circle,rgba(31,70,216,.85),transparent 65%);animation-delay:.4s,0s;animation-duration:2.4s,28s}
+.pl-blob.c{width:40vmax;height:40vmax;top:40%;left:35%;background:radial-gradient(circle,rgba(0,190,255,.22),transparent 65%);animation-delay:.6s,0s;animation-duration:2.4s,34s}
+@keyframes blobIn{to{opacity:1}}
+@keyframes drift{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-6vw,5vh) scale(1.12)}100%{transform:translate(5vw,-4vh) scale(.95)}}
+.pl-grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.07;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.pl-gridlines{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.25;
+  background-image:linear-gradient(rgba(120,150,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(120,150,255,.08) 1px,transparent 1px);
+  background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 30%,#000 20%,transparent 75%)}
+
+/* ---------- type ---------- */
+.pl .eyebrow{display:inline-flex;align-items:center;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--acc)}
+.pl h1{font-size:clamp(44px,8.4vw,100px);line-height:1;font-weight:800;margin:18px 0 24px}
+.pl h1 .w{display:inline-block;opacity:0;filter:blur(12px);transform:translateY(40px);animation:upBlur 1s cubic-bezier(.2,.8,.2,1) forwards}
+.pl h1 .hl{background:linear-gradient(100deg,var(--acc),var(--acc-soft) 45%,#6fe0ff 70%,var(--acc));background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:upBlur 1s cubic-bezier(.2,.8,.2,1) forwards, sheen 6s 1.5s linear infinite}
+@keyframes upBlur{to{opacity:1;filter:blur(0);transform:none}}
+@keyframes up{to{opacity:1;transform:none}}
+@keyframes sheen{to{background-position:-250% 0}}
+.pl .lead{font-size:clamp(18px,2.2vw,22px);color:var(--mut);max-width:560px;margin:0 0 20px;opacity:0;transform:translateY(20px);animation:up .9s .8s forwards}
+.pl .lead strong{color:var(--fg)}
+.pl .chips{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 34px;opacity:0;transform:translateY(20px);animation:up .9s 1s forwards}
+.pl .chip{padding:8px 14px;border-radius:999px;font-size:14px;color:var(--mut);background:rgba(255,255,255,.05);border:1px solid var(--line);backdrop-filter:blur(8px)}
+.pl .chip b{color:var(--acc)}
+.pl h2{font-size:clamp(30px,4.6vw,52px);line-height:1.08;margin:14px 0 0}
+.pl .sub{color:var(--mut);font-size:18px;max-width:620px;margin:16px 0 0}
+
+.pl .blink{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--acc);margin-right:12px;animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(129,240,2,.8)}70%{box-shadow:0 0 0 12px transparent}100%{box-shadow:0 0 0 0 transparent}}
+
+/* ---------- buttons ---------- */
+.pl .btn{position:relative;display:inline-flex;align-items:center;gap:12px;min-height:58px;padding:16px 36px;border-radius:999px;font-size:19px;font-weight:700;color:var(--onacc);text-decoration:none;
+  background:linear-gradient(110deg,var(--acc) 35%,#f1ffc9 50%,var(--acc) 65%);background-size:250% 100%;
+  box-shadow:0 12px 34px rgba(129,240,2,.45),inset 0 1px 0 rgba(255,255,255,.6),0 0 0 1px rgba(255,255,255,.4);
+  animation:shine 3s linear infinite;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
+.pl .btn:hover{transform:translateY(-4px) scale(1.04);box-shadow:0 20px 48px rgba(129,240,2,.65),inset 0 1px 0 rgba(255,255,255,.7),0 0 0 2px #fff}
+.pl .btn svg{width:24px;height:24px;flex:none}
+.pl .btn::before{content:"";position:absolute;inset:0;border-radius:inherit;border:2px solid var(--acc);animation:ring 2.2s ease-out infinite;pointer-events:none}
+@keyframes shine{from{background-position:100% 0}to{background-position:-100% 0}}
+@keyframes ring{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.25,1.6);opacity:0}}
+.pl .hero-cta{opacity:0;transform:translateY(20px);animation:up .9s 1.2s forwards,shine 3s 2s linear infinite}
+.pl .btn.sm{min-height:42px;padding:9px 22px;font-size:15px;opacity:0;transform:translateY(16px);animation:up .7s 5.3s forwards,shine 3s 6s linear infinite}
+.pl .btn.sm svg{width:20px;height:20px}
+.pl .hint{display:block;margin-top:14px;font-size:14px;color:var(--mut);opacity:0;animation:up .9s 1.4s forwards}
+
+/* ---------- hero + laptop ---------- */
+.pl .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:16px;align-items:center;min-height:92vh;padding-top:64px}
+.pl .stage{position:relative;height:580px;perspective:1600px;display:flex;align-items:center;justify-content:center}
+.pl .glow{position:absolute;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(129,240,2,.45),rgba(31,70,216,.25) 40%,transparent 68%);opacity:0;transform:scale(.2);animation:glow 3s 1s cubic-bezier(.2,.8,.2,1) forwards,breathe 6s 4s ease-in-out infinite}
+@keyframes glow{to{opacity:1;transform:scale(1)}}
+@keyframes breathe{50%{transform:scale(1.08);opacity:.8}}
+.pl .float{animation:float 7s 5s ease-in-out infinite;transform-style:preserve-3d}
+@keyframes float{50%{transform:translateY(-14px)}}
+.pl .lap{--k:1;position:relative;flex:none;width:560px;height:350px;margin-top:70px;transform-style:preserve-3d;transform:scale(var(--k)) rotateX(-13deg) rotateY(-30deg);animation:spin 3.4s cubic-bezier(.12,.7,.18,1) both}
+@keyframes spin{0%{transform:scale(var(--k)) translateZ(-1800px) rotateX(-22deg) rotateY(-720deg)}100%{transform:scale(var(--k)) translateZ(0) rotateX(-13deg) rotateY(-30deg)}}
+/* aluminium deck */
+.pl .base{position:absolute;left:0;bottom:12px;width:560px;height:360px;transform-origin:bottom;transform:translateZ(180px) rotateX(90deg);border-radius:8px 8px 20px 20px;
+  background:radial-gradient(120% 80% at 30% 20%,rgba(255,255,255,.55),transparent 55%),repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 1px,rgba(0,0,0,.02) 1px 3px),linear-gradient(180deg,#e6eaf1,#b6bfce);
+  box-shadow:inset 0 0 0 1px #a9b1c2,inset 0 -6px 14px rgba(0,0,0,.12)}
+.pl .base::before{content:"";position:absolute;top:0;left:0;right:0;height:14px;border-radius:8px 8px 0 0;background:linear-gradient(#4a5366,#9aa3b5)}
+.pl .kb{position:absolute;left:6%;top:9%;width:88%;height:50%;border-radius:8px;padding:8px;display:grid;grid-template-columns:repeat(14,1fr);grid-template-rows:repeat(6,1fr);gap:4px;background:#1a1f2b;box-shadow:inset 0 2px 6px rgba(0,0,0,.8),0 1px 0 rgba(255,255,255,.8)}
+.pl .kb i{display:block;border-radius:3px;background:linear-gradient(180deg,#2f3647,#1b202c);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 1px 1px rgba(0,0,0,.6)}
+.pl .kb i.sp{grid-column:span 6}
+.pl .kb i.w2{grid-column:span 2}
+.pl .tp{position:absolute;left:31%;top:63%;width:38%;height:30%;border-radius:10px;background:linear-gradient(180deg,#d4dae4,#c3cad6);box-shadow:inset 0 1px 3px rgba(0,0,0,.25),0 1px 0 rgba(255,255,255,.9)}
+.pl .lip{position:absolute;left:0;bottom:0;width:560px;height:12px;transform:translateZ(180px);border-radius:0 0 20px 20px;background:linear-gradient(#c5ccd9,#7f889b)}
+.pl .lip::after{content:"";position:absolute;left:50%;top:0;width:90px;height:5px;margin-left:-45px;border-radius:0 0 8px 8px;background:#6f788b}
+.pl .lid{position:absolute;left:0;bottom:12px;width:560px;height:350px;transform-origin:bottom;transform-style:preserve-3d;transform:translateZ(-180px) rotateX(-90deg);animation:lid 1.7s 3.2s cubic-bezier(.34,1.3,.5,1) forwards}
+@keyframes lid{to{transform:translateZ(-180px) rotateX(8deg)}}
+.pl .back,.pl .scr{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.pl .back{transform:translateZ(-3px) rotateY(180deg);border-radius:18px 18px 6px 6px;background:radial-gradient(90% 70% at 30% 20%,rgba(255,255,255,.6),transparent 60%),linear-gradient(180deg,#dde2eb,#b4bdcc)}
+.pl .back::after{content:"P";position:absolute;left:50%;top:50%;width:60px;height:60px;margin:-30px 0 0 -30px;border-radius:16px;display:grid;place-items:center;font:800 30px 'Sora',sans-serif;color:#8d97aa;background:linear-gradient(145deg,#f4f6fa,#b9c1cf);box-shadow:inset 0 1px 0 #fff}
+.pl .scr{transform:translateZ(3px);border:11px solid #05070c;border-radius:16px 16px 4px 4px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:12px;padding:0 40px;overflow:hidden;
+  background:radial-gradient(circle at 90% 8%,rgba(129,240,2,.55) 0,transparent 42%),radial-gradient(circle at 10% 100%,#1f46d8 0,transparent 55%),linear-gradient(160deg,#0a2ba8,#000b38);
+  box-shadow:0 0 0 1px #2a2f3a,0 0 60px rgba(129,240,2,.25)}
+/* screen powering on */
+.pl .scr .on{position:absolute;inset:0;background:#000;animation:power 1s 4.2s ease-out forwards;pointer-events:none;z-index:3}
+@keyframes power{0%{opacity:1}40%{opacity:.6;background:#fff}100%{opacity:0}}
+.pl .scr::before{content:"";position:absolute;top:0;left:50%;width:84px;height:16px;margin-left:-42px;background:#05070c;border-radius:0 0 10px 10px;z-index:4}
+.pl .scr::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.18) 0,rgba(255,255,255,0) 35%),linear-gradient(295deg,rgba(255,255,255,.05) 0,transparent 30%);pointer-events:none;z-index:2}
+.pl .scr .bar-top{position:absolute;top:22px;left:40px;display:flex;gap:6px;opacity:0;animation:up .6s 4.7s forwards}
+.pl .scr .bar-top span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.35)}
+.pl .scr h3{font-size:42px;line-height:1.02;color:#fff;opacity:0;transform:translateY(20px);animation:up .7s 4.9s forwards}
+.pl .scr p{margin:0;font-size:15px;color:#e0e7ff;opacity:0;transform:translateY(20px);animation:up .7s 5.1s forwards}
+.pl .sideL,.pl .sideR{position:absolute;bottom:0;width:360px;height:12px;background:linear-gradient(#aeb6c6,#7c859a);backface-visibility:hidden}
+.pl .sideL{left:-180px;transform:rotateY(-90deg)}
+.pl .sideR{left:380px;transform:rotateY(90deg)}
+.pl .lidL,.pl .lidR,.pl .lidT{position:absolute;background:linear-gradient(#c3cad8,#8e97aa);backface-visibility:hidden}
+.pl .lidL{left:-3px;top:0;width:6px;height:350px;transform:rotateY(-90deg)}
+.pl .lidR{left:557px;top:0;width:6px;height:350px;transform:rotateY(90deg)}
+.pl .lidT{left:0;top:-3px;width:560px;height:6px;transform:rotateX(90deg)}
+.pl .floor{position:absolute;left:-80px;bottom:0;width:720px;height:480px;transform-origin:bottom;transform:translateZ(240px) rotateX(90deg);background:radial-gradient(ellipse at center,rgba(0,0,0,.75) 0,rgba(0,0,0,.3) 35%,transparent 62%);filter:blur(6px);pointer-events:none}
+
+/* ---------- marquee ---------- */
+.pl .marquee{overflow:hidden;border-block:1px solid var(--line);background:rgba(0,8,42,.45);backdrop-filter:blur(6px);padding:18px 0;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.pl .marquee div{display:flex;gap:48px;width:max-content;animation:marq 30s linear infinite;font-family:'Sora',sans-serif;font-weight:600;font-size:20px;color:var(--mut);white-space:nowrap}
+.pl .marquee em{font-style:normal;color:var(--acc)}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ---------- cards ---------- */
+.pl .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:40px}
+.pl .grid3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.pl a.card{display:block;color:inherit;text-decoration:none}
+.pl .card{position:relative;background:var(--card);border:1px solid var(--line);padding:32px;border-radius:20px;backdrop-filter:blur(14px);overflow:hidden;
+  transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .4s,box-shadow .4s;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.pl .card::after{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--mx,50%) var(--my,0%),rgba(129,240,2,.16),transparent 45%);opacity:0;transition:opacity .3s;pointer-events:none}
+.pl .card:hover{transform:translateY(-8px);border-color:rgba(129,240,2,.7);box-shadow:0 24px 60px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.12)}
+.pl .card:hover::after{opacity:1}
+.pl .card.hl{background:linear-gradient(145deg,#a6ff3d,var(--acc) 50%,#5ccf00);color:var(--onacc);border-color:transparent;box-shadow:0 20px 60px rgba(129,240,2,.3)}
+.pl .card .lab{font-weight:700;color:var(--mut)}
+.pl .card.hl .lab{color:var(--onacc)}
+.pl .card p{margin:12px 0 0;color:var(--mut)}
+.pl .card.hl p{color:rgba(0,18,87,.8)}
+.pl .card .ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:24px;background:rgba(129,240,2,.12);border:1px solid rgba(129,240,2,.35);margin-bottom:18px}
+.pl .card h3{font-size:21px}
+.pl .price{font-family:'Sora',sans-serif;font-size:clamp(34px,5vw,48px);font-weight:800;line-height:1.1;margin-top:8px}
+.pl .price small{font-size:20px;font-weight:500}
+.pl .go{display:inline-block;margin-top:18px;font-weight:700}
+
+/* ---------- timeline ---------- */
+.pl .track{position:relative;height:10px;background:rgba(80,116,255,.25);border-radius:5px;margin:48px 0 16px;overflow:hidden}
+.pl .bar{height:100%;width:0;background:linear-gradient(90deg,var(--blue),#6fe0ff,var(--acc));border-radius:5px;transition:width 2.4s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 20px rgba(129,240,2,.6)}
+.pl .days{display:flex;justify-content:space-between;color:var(--mut);font-size:14px;flex-wrap:wrap;gap:8px}
+.pl .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:40px}
+.pl .step{padding:24px;border-left:2px solid var(--line)}
+.pl .step b{font-family:'Sora',sans-serif;font-size:40px;color:var(--acc);display:block;line-height:1;margin-bottom:10px}
+.pl .step h3{font-size:19px;margin-bottom:6px}
+.pl .step p{margin:0;color:var(--mut)}
+.pl .big{font-family:'Sora',sans-serif;font-size:clamp(72px,14vw,160px);font-weight:800;line-height:1;background:linear-gradient(180deg,var(--acc-soft),var(--acc));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ---------- faq ---------- */
+.pl details{border-bottom:1px solid var(--line);padding:22px 0}
+.pl summary{cursor:pointer;list-style:none;font-family:'Sora',sans-serif;font-weight:600;font-size:19px;display:flex;justify-content:space-between;gap:16px}
+.pl summary::after{content:"+";color:var(--acc);font-size:26px;line-height:1;transition:transform .3s}
+.pl details[open] summary::after{transform:rotate(45deg)}
+.pl details p{color:var(--mut);margin:12px 0 0;max-width:760px}
+
+/* ---------- contact ---------- */
+.pl #contato{text-align:center}
+.pl .cta-box{position:relative;padding:72px 24px;border-radius:32px;border:1px solid var(--line);overflow:hidden;
+  background:radial-gradient(circle at 50% 0%,rgba(129,240,2,.25),transparent 60%),linear-gradient(160deg,rgba(31,70,216,.4),rgba(0,8,42,.6));backdrop-filter:blur(10px)}
+.pl .cta-box .sub{margin:16px auto 0}
+.pl footer{color:var(--mut);font-size:14px;border-top:1px solid var(--line);text-align:center;padding:40px 24px}
+
+.pl .rv{opacity:0;transform:translateY(40px);filter:blur(6px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1),filter .9s}
+.pl .rv.in{opacity:1;transform:none;filter:none}
+
+@media (max-width:1100px){.pl .lap{--k:.85}.pl .stage{height:520px}}
+@media (max-width:900px){.pl .hero{grid-template-columns:1fr;min-height:0}.pl .lap{--k:1}.pl .stage{height:580px}}
+@media (max-width:640px){.pl .lap{--k:.72;margin-top:40px}.pl .stage{height:440px}.pl section,.pl header{padding:64px 20px}}
+@media (max-width:440px){.pl .lap{--k:.56}.pl .stage{height:380px}.pl .glow{width:420px;height:420px}}
+@media (prefers-reduced-motion:reduce){.pl *{animation-duration:.01s!important;animation-iteration-count:1!important}}
+
+/* ---------- continuous turntable spin + extra modelling ---------- */
+.pl .float{animation:turn 14s 5s ease-in-out infinite}
+@keyframes turn{
+  0%{transform:translateY(0) rotateY(0deg)}
+  25%{transform:translateY(-14px) rotateY(28deg)}
+  50%{transform:translateY(0) rotateY(0deg)}
+  75%{transform:translateY(-14px) rotateY(-28deg)}
+  100%{transform:translateY(0) rotateY(0deg)}}
+.pl .lap:hover{cursor:grab}
+/* hinge cylinder */
+.pl .hinge{position:absolute;left:60px;bottom:6px;width:440px;height:14px;transform:translateZ(-178px);border-radius:7px;background:linear-gradient(180deg,#3a4152,#9aa3b5 45%,#4a5263);box-shadow:0 2px 6px rgba(0,0,0,.5)}
+/* speaker grilles */
+.pl .spk{position:absolute;top:9%;width:3%;height:50%;border-radius:4px;background:radial-gradient(circle,#6f788b 1px,transparent 1.4px) 0 0/6px 6px}
+.pl .spk.l{left:1.5%}.pl .spk.r{right:1.5%}
+/* rubber feet shadow under deck */
+.pl .feet{position:absolute;left:30px;bottom:0;width:500px;height:6px;transform:translateZ(175px) translateY(4px);background:radial-gradient(ellipse,rgba(0,0,0,.55),transparent 70%);filter:blur(2px)}
+/* webcam + chin */
+.pl .cam{position:absolute;top:4px;left:50%;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#4a6cff,#05070c 60%);z-index:5}
+.pl .chin{position:absolute;bottom:-11px;left:0;right:0;height:11px;display:grid;place-items:center;font:600 7px 'Sora',sans-serif;letter-spacing:2px;color:#5b6375;z-index:5}
+/* sweeping reflection on the screen during spin */
+.pl .scr .sweep{position:absolute;inset:-50%;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.14) 50%,transparent 60%);animation:sweep 7s 5s ease-in-out infinite;pointer-events:none;z-index:2}
+@keyframes sweep{0%,100%{transform:translateX(-40%)}50%{transform:translateX(40%)}}
+/* metal edge highlight on deck */
+.pl .base::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),inset 0 0 30px rgba(255,255,255,.25);pointer-events:none}
+/* ---------- interaction: drag / hover the laptop ---------- */
+.pl .lap{touch-action:none;-webkit-user-select:none;user-select:none}
+.pl .lap.grab{cursor:grabbing}
+.pl .drag-hint{position:absolute;left:0;right:0;bottom:4px;z-index:5;text-align:center;font-size:15px;font-weight:500;color:var(--mut,#dce4ff);opacity:0;animation:hintin .7s 5.6s forwards;pointer-events:none;transition:opacity .4s}
+.pl .drag-hint.off{opacity:0!important}
+@keyframes hintin{to{opacity:1}}
+/* ---------- mobile fixes ---------- */
+@media (max-width:900px){.pl .hero{grid-template-columns:minmax(0,1fr)}.pl .stage{min-width:0;width:100%}.pl .hero>*{min-width:0}}
+@media (max-width:640px){
+.pl h1{font-size:clamp(40px,12.5vw,60px);margin:14px 0 18px}
+.pl .hero{padding-top:40px;gap:0}
+.pl .lead{font-size:17px}
+.pl .chip{font-size:13px;padding:7px 12px}
+.pl .hero-cta{width:100%;justify-content:center;padding:16px 22px;font-size:18px}
+.pl .stage{margin-top:8px}
+.pl .drag-hint{font-size:13px;padding:0 12px}
+.pl section,.pl header{padding-left:20px;padding-right:20px}
+.pl .card{padding:26px}
+.pl .grid,.pl .grid3{grid-template-columns:minmax(0,1fr)}
+.pl .steps{grid-template-columns:minmax(0,1fr)}
+.pl .cta-box{padding:48px 20px;border-radius:24px}
+.pl .cta-box .btn{width:100%;justify-content:center;padding:16px 20px;font-size:18px}
+.pl .marquee div{font-size:17px;gap:36px}
+.pl summary{font-size:17px}
+}
+@media (max-width:640px){
+.pl .eyebrow{font-size:11.5px;letter-spacing:2px;white-space:nowrap}
+.pl .blink{margin-right:10px;flex:none}
+.pl .hero-cta{width:calc(100% - 20px);margin:0 10px}
+.pl .cta-box .btn{width:calc(100% - 20px)}
+.pl .price{font-size:clamp(28px,8.6vw,36px)}
+}
+@media (max-width:440px){.pl .lap{--k:.5}.pl .stage{height:360px}}
+@media (max-width:360px){.pl .lap{--k:.44}.pl h1{font-size:38px}.pl .eyebrow{font-size:10.5px;letter-spacing:1.5px}}
+</style></head><body>
+<div class="pl" data-tsd-source="/src/routes/index.tsx:89:5"><div class="pl-bg" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:90:7"><div class="pl-blob a" data-tsd-source="/src/routes/index.tsx:91:9"></div><div class="pl-blob b" data-tsd-source="/src/routes/index.tsx:92:9"></div><div class="pl-blob c" data-tsd-source="/src/routes/index.tsx:93:9"></div></div><div class="pl-gridlines" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:95:7"></div><div class="pl-grain" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:96:7"></div><header class="hero" data-tsd-source="/src/routes/index.tsx:98:7"><div data-tsd-source="/src/routes/index.tsx:99:9"><div class="eyebrow" data-tsd-source="/src/routes/index.tsx:100:11"><span class="blink" data-tsd-source="/src/routes/index.tsx:100:36"></span>Disponível para novos projetos</div><h1 data-tsd-source="/src/routes/index.tsx:101:11"><span data-tsd-source="/src/routes/index.tsx:103:15"><span class="w" style="animation-delay:0s" data-tsd-source="/src/routes/index.tsx:104:17">Olá,</span> </span><span data-tsd-source="/src/routes/index.tsx:103:15"><span class="w" style="animation-delay:0.12s" data-tsd-source="/src/routes/index.tsx:104:17">eu</span> </span><span data-tsd-source="/src/routes/index.tsx:103:15"><span class="w" style="animation-delay:0.24s" data-tsd-source="/src/routes/index.tsx:104:17">sou</span> </span><span data-tsd-source="/src/routes/index.tsx:103:15"><span class="w" style="animation-delay:0.36s" data-tsd-source="/src/routes/index.tsx:104:17">o</span> </span><span class="w hl" style="animation-delay:0.5s" data-tsd-source="/src/routes/index.tsx:107:13">Paulo.</span></h1><p class="lead" data-tsd-source="/src/routes/index.tsx:109:11">Eu crio sites bonitos, rápidos e que <strong data-tsd-source="/src/routes/index.tsx:110:50">trazem clientes de verdade</strong> pro seu negócio. Você me conta a ideia, eu cuido do resto — e em <strong data-tsd-source="/src/routes/index.tsx:110:159">até 10 dias</strong> ele já está no ar.</p><div class="chips" data-tsd-source="/src/routes/index.tsx:112:11"><span class="chip" data-tsd-source="/src/routes/index.tsx:113:13">A partir de <b data-tsd-source="/src/routes/index.tsx:113:48">R$ 300</b></span><span class="chip" data-tsd-source="/src/routes/index.tsx:114:13">Pronto em <b data-tsd-source="/src/routes/index.tsx:114:46">10 dias</b></span><span class="chip" data-tsd-source="/src/routes/index.tsx:115:13">Funciona no <b data-tsd-source="/src/routes/index.tsx:115:48">celular</b></span></div><a class="btn hero-cta" href="#contato" data-tsd-source="/src/routes/index.tsx:117:11"><svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:29:5"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.4A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.3-.2-2.4.6.7-2.3-.2-.3A8 8 0 0 1 12 4zm-3 3.5c-.2 0-.5.1-.7.4-.3.4-.9 1-.9 2.3 0 1.3 1 2.6 1.1 2.8.1.2 1.900 3 4.7 4.1 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.4l-1.6-.8c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.8-.4-2-1-2.9-2.300-.1-.2 0-.3.1-.4l.5-.6c.1-.2.2-.3.2-.5 0-.2-.8-2-1-2.5-.2-.5-.4-.4-.6-.4z" data-tsd-source="/src/routes/index.tsx:30:7"></path></svg>Quero meu site agora</a><span class="hint" data-tsd-source="/src/routes/index.tsx:118:11">Resposta rápida pelo WhatsApp, sem compromisso.</span></div><div class="stage" data-tsd-source="/src/routes/index.tsx:121:9"><div class="glow" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:122:11"></div><div class="drag-hint" id="dragHint">Arraste para girar o notebook em qualquer direção</div><div class="float" data-tsd-source="/src/routes/index.tsx:123:11"><div class="lap" data-tsd-source="/src/routes/index.tsx:124:13"><div class="base" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:125:15"><div class="kb" data-tsd-source="/src/routes/index.tsx:126:17"><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="w2" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="w2" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="sp" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i><i class="" data-tsd-source="/src/routes/index.tsx:127:36"></i></div><div class="tp" data-tsd-source="/src/routes/index.tsx:129:17"></div><div class="spk l" data-tsd-source="/src/routes/index.tsx:130:17"></div><div class="spk r" data-tsd-source="/src/routes/index.tsx:131:17"></div></div><div class="hinge" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:133:15"></div><div class="feet" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:134:15"></div><div class="floor" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:135:15"></div><div class="lip" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:136:15"></div><div class="sideL" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:137:15"></div><div class="sideR" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:138:15"></div><div class="lid" data-tsd-source="/src/routes/index.tsx:139:15"><div class="back" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:140:17"></div><div class="lidL" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:141:17"></div><div class="lidR" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:142:17"></div><div class="lidT" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:143:17"></div><div class="scr" data-tsd-source="/src/routes/index.tsx:144:17"><div class="on" data-tsd-source="/src/routes/index.tsx:145:19"></div><div class="sweep" data-tsd-source="/src/routes/index.tsx:146:19"></div><div class="cam" data-tsd-source="/src/routes/index.tsx:147:19"></div><div class="bar-top" data-tsd-source="/src/routes/index.tsx:148:19"><span data-tsd-source="/src/routes/index.tsx:148:44"></span><span data-tsd-source="/src/routes/index.tsx:148:52"></span><span data-tsd-source="/src/routes/index.tsx:148:60"></span></div><h3 data-tsd-source="/src/routes/index.tsx:149:19">Seu negócio<br data-tsd-source="/src/routes/index.tsx:149:34">merece isso.</h3><p data-tsd-source="/src/routes/index.tsx:150:19">Sites a partir de R$ 300 · no ar em até 10 dias</p><a class="btn sm" href="#contato" data-tsd-source="/src/routes/index.tsx:151:19"><svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:29:5"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.4A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.3-.2-2.4.6.7-2.3-.2-.3A8 8 0 0 1 12 4zm-3 3.5c-.2 0-.5.1-.7.4-.3.4-.9 1-.9 2.3 0 1.3 1 2.6 1.1 2.8.1.2 1.900 3 4.7 4.1 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.4l-1.6-.8c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.8-.4-2-1-2.9-2.300-.1-.2 0-.3.1-.4l.5-.6c.1-.2.2-.3.2-.5 0-.2-.8-2-1-2.5-.2-.5-.4-.4-.6-.4z" data-tsd-source="/src/routes/index.tsx:30:7"></path></svg>Criar meu site</a></div></div></div></div></div></header><div class="marquee" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:159:7"><div data-tsd-source="/src/routes/index.tsx:160:9"><span style="display:flex;gap:48px" data-tsd-source="/src/routes/index.tsx:162:13"><span data-tsd-source="/src/routes/index.tsx:163:15">Lojas</span><em data-tsd-source="/src/routes/index.tsx:163:33">✦</em><span data-tsd-source="/src/routes/index.tsx:163:43">Restaurantes</span><em data-tsd-source="/src/routes/index.tsx:163:68">✦</em><span data-tsd-source="/src/routes/index.tsx:163:78">Profissionais liberais</span><em data-tsd-source="/src/routes/index.tsx:163:113">✦</em><span data-tsd-source="/src/routes/index.tsx:164:15">Clínicas</span><em data-tsd-source="/src/routes/index.tsx:164:36">✦</em><span data-tsd-source="/src/routes/index.tsx:164:46">Salões de beleza</span><em data-tsd-source="/src/routes/index.tsx:164:75">✦</em><span data-tsd-source="/src/routes/index.tsx:164:85">Prestadores de serviço</span><em data-tsd-source="/src/routes/index.tsx:164:120">✦</em><span data-tsd-source="/src/routes/index.tsx:165:15">Portfólios</span><em data-tsd-source="/src/routes/index.tsx:165:38">✦</em></span><span style="display:flex;gap:48px" data-tsd-source="/src/routes/index.tsx:162:13"><span data-tsd-source="/src/routes/index.tsx:163:15">Lojas</span><em data-tsd-source="/src/routes/index.tsx:163:33">✦</em><span data-tsd-source="/src/routes/index.tsx:163:43">Restaurantes</span><em data-tsd-source="/src/routes/index.tsx:163:68">✦</em><span data-tsd-source="/src/routes/index.tsx:163:78">Profissionais liberais</span><em data-tsd-source="/src/routes/index.tsx:163:113">✦</em><span data-tsd-source="/src/routes/index.tsx:164:15">Clínicas</span><em data-tsd-source="/src/routes/index.tsx:164:36">✦</em><span data-tsd-source="/src/routes/index.tsx:164:46">Salões de beleza</span><em data-tsd-source="/src/routes/index.tsx:164:75">✦</em><span data-tsd-source="/src/routes/index.tsx:164:85">Prestadores de serviço</span><em data-tsd-source="/src/routes/index.tsx:164:120">✦</em><span data-tsd-source="/src/routes/index.tsx:165:15">Portfólios</span><em data-tsd-source="/src/routes/index.tsx:165:38">✦</em></span></div></div><section id="por-que" data-tsd-source="/src/routes/index.tsx:171:7"><div class="eyebrow rv" data-tsd-source="/src/routes/index.tsx:172:9">Por que ter um site</div><h2 class="rv" data-tsd-source="/src/routes/index.tsx:173:9">Hoje, quem não é encontrado no Google, perde cliente.</h2><p class="sub rv" data-tsd-source="/src/routes/index.tsx:174:9">Um site bem feito trabalha por você 24 horas por dia: apresenta seu trabalho, passa confiança e leva o cliente direto pro seu WhatsApp.</p><div class="grid grid3" data-tsd-source="/src/routes/index.tsx:175:9"><div class="card rv" data-tsd-source="/src/routes/index.tsx:176:11"><div class="ico" data-tsd-source="/src/routes/index.tsx:176:36">🎨</div><h3 data-tsd-source="/src/routes/index.tsx:176:65">Do seu jeito</h3><p data-tsd-source="/src/routes/index.tsx:176:86">Nada de modelo pronto. Cada site é pensado pra combinar com a cara do seu negócio.</p></div><div class="card rv" data-tsd-source="/src/routes/index.tsx:177:11"><div class="ico" data-tsd-source="/src/routes/index.tsx:177:36">📱</div><h3 data-tsd-source="/src/routes/index.tsx:177:65">Perfeito no celular</h3><p data-tsd-source="/src/routes/index.tsx:177:93">A maioria dos seus clientes vai te achar pelo telefone — e o site fica lindo em qualquer tela.</p></div><div class="card rv" data-tsd-source="/src/routes/index.tsx:178:11"><div class="ico" data-tsd-source="/src/routes/index.tsx:178:36">⚡</div><h3 data-tsd-source="/src/routes/index.tsx:178:64">Rápido de verdade</h3><p data-tsd-source="/src/routes/index.tsx:178:90">Carrega em segundos, porque ninguém tem paciência pra esperar página abrir.</p></div><div class="card rv" data-tsd-source="/src/routes/index.tsx:179:11"><div class="ico" data-tsd-source="/src/routes/index.tsx:179:36">🤝</div><h3 data-tsd-source="/src/routes/index.tsx:179:65">Atendimento direto</h3><p data-tsd-source="/src/routes/index.tsx:179:92">Você fala comigo, não com robô nem atendente. Dúvida? É só mandar mensagem.</p></div></div></section><section id="precos" data-tsd-source="/src/routes/index.tsx:183:7"><div class="eyebrow rv" data-tsd-source="/src/routes/index.tsx:184:9">Investimento</div><h2 class="rv" data-tsd-source="/src/routes/index.tsx:185:9">Preço justo, sem letras miúdas.</h2><p class="sub rv" data-tsd-source="/src/routes/index.tsx:186:9">O valor depende do tamanho do projeto. A gente conversa, eu entendo o que você precisa e te passo um orçamento fechado — sem surpresa no final.</p><div class="grid" data-tsd-source="/src/routes/index.tsx:187:9"><a class="card hl rv" href="#contato" data-tsd-source="/src/routes/index.tsx:188:11"><div class="lab" data-tsd-source="/src/routes/index.tsx:189:13">Criação de sites</div><div class="price" data-tsd-source="/src/routes/index.tsx:190:13">R$&nbsp;<span data-n="300" data-tsd-source="/src/routes/index.tsx:190:39">300</span> a R$&nbsp;<span data-n="800" data-tsd-source="/src/routes/index.tsx:190:74">800</span></div><p data-tsd-source="/src/routes/index.tsx:191:13">Pagamento único. Do site de uma página até um site completo com várias seções.</p><span class="go" data-tsd-source="/src/routes/index.tsx:192:13">Quero um orçamento →</span></a><a class="card rv" href="#contato" data-tsd-source="/src/routes/index.tsx:194:11"><div class="lab" data-tsd-source="/src/routes/index.tsx:195:13">Planos de domínio</div><div class="price" data-tsd-source="/src/routes/index.tsx:196:13">a partir de R$&nbsp;<span data-n="60" data-tsd-source="/src/routes/index.tsx:196:51">60</span><small data-tsd-source="/src/routes/index.tsx:196:78">/mês</small></div><p data-tsd-source="/src/routes/index.tsx:197:13">Seu endereço próprio na internet (seunegocio.com.br) e o site sempre no ar, sem dor de cabeça.</p><span class="go" data-tsd-source="/src/routes/index.tsx:198:13">Falar com o Paulo →</span></a></div></section><section id="prazo" data-tsd-source="/src/routes/index.tsx:203:7"><div class="eyebrow rv" data-tsd-source="/src/routes/index.tsx:204:9">Prazo</div><h2 class="rv" data-tsd-source="/src/routes/index.tsx:205:9">Do primeiro “oi” ao site no ar.</h2><div class="rv" style="margin-top:24px" data-tsd-source="/src/routes/index.tsx:206:9"><span class="big" data-n="10" data-tsd-source="/src/routes/index.tsx:207:11">10</span><span class="disp" style="font-size:28px;margin-left:12px" data-tsd-source="/src/routes/index.tsx:208:11">dias, no máximo</span></div><div class="rv" data-tsd-source="/src/routes/index.tsx:210:9"><div class="track" data-tsd-source="/src/routes/index.tsx:211:11"><div class="bar" id="bar" data-tsd-source="/src/routes/index.tsx:211:34"></div></div><div class="days" data-tsd-source="/src/routes/index.tsx:212:11"><span data-tsd-source="/src/routes/index.tsx:212:33">Dia 1</span><span data-tsd-source="/src/routes/index.tsx:212:51">Dia 5</span><span data-tsd-source="/src/routes/index.tsx:212:69">Dia 10</span></div></div><div class="steps" data-tsd-source="/src/routes/index.tsx:214:9"><div class="step rv" data-tsd-source="/src/routes/index.tsx:215:11"><b data-tsd-source="/src/routes/index.tsx:215:36">01</b><h3 data-tsd-source="/src/routes/index.tsx:215:45">A gente conversa</h3><p data-tsd-source="/src/routes/index.tsx:215:70">Você me conta sobre seu negócio, o que gosta e o que espera. Sem formulário chato.</p></div><div class="step rv" data-tsd-source="/src/routes/index.tsx:216:11"><b data-tsd-source="/src/routes/index.tsx:216:36">02</b><h3 data-tsd-source="/src/routes/index.tsx:216:45">Eu coloco a mão na massa</h3><p data-tsd-source="/src/routes/index.tsx:216:78">Desenvolvo o site e te mostro o andamento. Você acompanha tudo de perto.</p></div><div class="step rv" data-tsd-source="/src/routes/index.tsx:217:11"><b data-tsd-source="/src/routes/index.tsx:217:36">03</b><h3 data-tsd-source="/src/routes/index.tsx:217:45">Ajustes e lançamento</h3><p data-tsd-source="/src/routes/index.tsx:217:74">Ajeitamos os últimos detalhes juntos e seu site vai pro ar, pronto pra receber clientes.</p></div></div></section><section id="duvidas" data-tsd-source="/src/routes/index.tsx:221:7"><div class="eyebrow rv" data-tsd-source="/src/routes/index.tsx:222:9">Dúvidas comuns</div><h2 class="rv" data-tsd-source="/src/routes/index.tsx:223:9">Perguntas que sempre me fazem.</h2><div class="rv" style="margin-top:32px" data-tsd-source="/src/routes/index.tsx:224:9"><details data-tsd-source="/src/routes/index.tsx:225:11"><summary data-tsd-source="/src/routes/index.tsx:225:20">Preciso entender de tecnologia?</summary><p data-tsd-source="/src/routes/index.tsx:225:70">Nem um pouco. Você só precisa me contar sobre o seu negócio — o lado técnico fica todo comigo.</p></details><details data-tsd-source="/src/routes/index.tsx:226:11"><summary data-tsd-source="/src/routes/index.tsx:226:20">E se eu quiser mudar alguma coisa?</summary><p data-tsd-source="/src/routes/index.tsx:226:73">Antes de publicar, a gente revisa tudo junto e eu faço os ajustes até você ficar satisfeito.</p></details><details data-tsd-source="/src/routes/index.tsx:227:11"><summary data-tsd-source="/src/routes/index.tsx:227:20">O que é o plano de domínio?</summary><p data-tsd-source="/src/routes/index.tsx:227:66">É o endereço do seu site (tipo seunegocio.com.br) e a hospedagem que mantém ele funcionando. A partir de R$ 60 por mês.</p></details><details data-tsd-source="/src/routes/index.tsx:228:11"><summary data-tsd-source="/src/routes/index.tsx:228:20">Como faço para começar?</summary><p data-tsd-source="/src/routes/index.tsx:228:62">Clica no botão do WhatsApp aqui embaixo e me manda um oi. Eu respondo rapidinho.</p></details></div></section><section id="contato" data-tsd-source="/src/routes/index.tsx:232:7"><div class="cta-box rv" data-tsd-source="/src/routes/index.tsx:233:9"><div class="eyebrow" data-tsd-source="/src/routes/index.tsx:234:11">Vamos conversar</div><h2 data-tsd-source="/src/routes/index.tsx:235:11">Bora tirar seu site do papel?</h2><p class="sub" data-tsd-source="/src/routes/index.tsx:236:11">Me chama no WhatsApp e me conta sua ideia. Sem compromisso — se não fizer sentido pra você, tudo bem também.</p><a class="btn" style="margin:32px 0 16px" href="https://wa.me/5519989702707?text=Ol%C3%A1%2C%20Paulo!%20Vi%20seu%20site%20e%20gostaria%20de%20solicitar%20a%20cria%C3%A7%C3%A3o%20de%20um%20site.%20Podemos%20conversar%3F" target="_blank" rel="noopener noreferrer" data-tsd-source="/src/routes/index.tsx:237:11"><svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:29:5"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.4A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.3-.2-2.4.6.7-2.3-.2-.3A8 8 0 0 1 12 4zm-3 3.5c-.2 0-.5.1-.7.4-.3.4-.9 1-.9 2.3 0 1.3 1 2.6 1.1 2.8.1.2 1.900 3 4.7 4.1 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.4l-1.6-.8c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.8-.4-2-1-2.9-2.300-.1-.2 0-.3.1-.4l.5-.6c.1-.2.2-.3.2-.5 0-.2-.8-2-1-2.5-.2-.5-.4-.4-.6-.4z" data-tsd-source="/src/routes/index.tsx:30:7"></path></svg>Chamar no WhatsApp</a><p style="color:var(--mut);margin:0" data-tsd-source="/src/routes/index.tsx:238:11">(19) 98970-2707 · Paulo, desenvolvedor de sites</p></div></section><footer data-tsd-source="/src/routes/index.tsx:242:7">© Paulo · Sites a partir de R$ 300 · Domínio a partir de R$ 60/mês</footer></div><script>
+(function(){
+var root=document.querySelector('.pl');
+function count(n,to,ms){var s=null;function f(ts){if(s===null)s=ts;var p=Math.min((ts-s)/ms,1);n.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)}requestAnimationFrame(f)}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var t=e.target;t.classList.add('in');var bar=t.querySelector('#bar');if(bar)bar.style.width='100%';t.querySelectorAll('[data-n]').forEach(function(n){count(n,+n.getAttribute('data-n'),1500)});io.unobserve(t)})},{threshold:.2});
+root.querySelectorAll('.rv').forEach(function(r){io.observe(r)});
+root.addEventListener('pointermove',function(ev){var c=ev.target.closest&&ev.target.closest('.card');if(!c)return;var r=c.getBoundingClientRect();c.style.setProperty('--mx',(ev.clientX-r.left)+'px');c.style.setProperty('--my',(ev.clientY-r.top)+'px')});
+document.querySelectorAll('a[href="#contato"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();document.getElementById('contato').scrollIntoView({behavior:'smooth',block:'center'})})});
+})();
+</script>
+<script>
+(function(){
+var lap=document.querySelector('.pl .lap'),stage=document.querySelector('.pl .stage'),fl=document.querySelector('.pl .float'),floor=document.querySelector('.pl .floor'),hint=document.getElementById('dragHint');
+if(!lap||!stage)return;
+var RX=-13,RY=-30,rx=RX,ry=RY,pv=0,yv=0,hx=0,hy=0,drag=false,ready=false,raf=0,lx=0,ly=0,K=.018,D=.9;
+function wrap(a){return ((a+180)%360+360)%360-180}
+function sway(on){if(fl)fl.style.animationPlayState=on?'running':'paused'}
+function apply(){
+lap.style.transform='scale(var(--k)) rotateX('+rx.toFixed(2)+'deg) rotateY('+ry.toFixed(2)+'deg)';
+if(floor){var dev=Math.hypot(wrap(rx-RX),wrap(ry-RY));floor.style.opacity=Math.max(0,1-dev/35)}
+}
+function frame(){
+raf=0;
+if(drag)return;
+var dx=wrap(RX+hx-rx),dy=wrap(RY+hy-ry);
+pv+=dx*K;yv+=dy*K;pv*=D;yv*=D;rx+=pv;ry+=yv;
+if(Math.abs(pv)<.01&&Math.abs(yv)<.01&&Math.abs(dx)<.03&&Math.abs(dy)<.03){rx=RX+hx;ry=RY+hy;pv=yv=0;apply();if(!hx&&!hy)sway(true);return}
+apply();raf=requestAnimationFrame(frame);
+}
+function kick(){if(!raf&&!drag)raf=requestAnimationFrame(frame)}
+function begin(){ready=true;lap.style.animation='none';apply()}
+lap.addEventListener('animationend',function(e){if(e.target===lap&&e.animationName==='spin')begin()});
+setTimeout(function(){if(!ready)begin()},4200);
+lap.addEventListener('pointerdown',function(e){
+if(!ready||e.target.closest('a'))return;
+drag=true;lx=e.clientX;ly=e.clientY;pv=yv=0;hx=hy=0;sway(false);
+try{lap.setPointerCapture(e.pointerId)}catch(_){}
+lap.classList.add('grab');if(hint)hint.classList.add('off');
+});
+lap.addEventListener('pointermove',function(e){
+if(!drag)return;
+var ddx=e.clientX-lx,ddy=e.clientY-ly;lx=e.clientX;ly=e.clientY;
+ry+=ddx*.5;rx-=ddy*.5;
+yv=.6*yv+.4*ddx*.5;pv=.6*pv-.4*ddy*.5;
+apply();
+});
+function end(){if(!drag)return;drag=false;lap.classList.remove('grab');pv=Math.max(-40,Math.min(40,pv));yv=Math.max(-40,Math.min(40,yv));kick()}
+lap.addEventListener('pointerup',end);
+lap.addEventListener('pointercancel',end);
+stage.addEventListener('pointermove',function(e){
+if(!ready||drag||e.pointerType!=='mouse')return;
+var r=stage.getBoundingClientRect();
+var nx=Math.max(-1,Math.min(1,(e.clientX-r.left-r.width/2)/(r.width/2)));
+var ny=Math.max(-1,Math.min(1,(e.clientY-r.top-r.height/2)/(r.height/2)));
+hy=nx*20;hx=-ny*12;sway(false);kick();
+});
+stage.addEventListener('pointerleave',function(){if(drag)return;hx=hy=0;kick()});
+})();
+</script>
+</body>
+</html>
